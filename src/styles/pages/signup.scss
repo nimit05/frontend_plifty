@@ -1,0 +1,151 @@
+.signup_page{
+    width: 20%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    // border: solid white;
+    // height: 800px;
+    color: white;
+    min-width: 450px;
+}
+
+.sign_up_cont{
+    width: 100%;
+    border: 1px solid rgb(233, 233, 233);
+    padding: 10px 0;
+}
+
+.site_name_sp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 25%;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    // border: solid white;
+    text-align: center;
+    cursor: pointer;
+    .icon{
+        width: 30px;
+        height: 30px;
+        border-radius: 35px;
+        background-color: $pri;
+        margin-right: 5px;
+    }
+    .name{
+        font-weight: 700;
+        font-size: 1.7rem;
+    }
+}
+
+.sign_up_heading{
+    width: 100%;
+    text-align: center;
+    // color: $pri;
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 20px auto;
+    
+}
+
+.signup_details{
+    width: 95%;
+    margin: 10px auto;
+    // border: solid white;
+    min-width: 400px;
+    
+    label{
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+
+    .comp_name{
+        display: flex;
+        flex-direction: row;
+        // justify-content: space-between;
+        width: 93%;
+        padding: 15px;
+        // border: solid white;
+
+        .f_name{
+            margin-right: 40px;
+        }
+
+        input{
+            width: 90%;
+            background-color: transparent;
+            outline: $pri;
+            color: white;
+            border: transparent;
+            border-bottom: 2px solid white;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+    }
+
+    .input_feilds_sp{
+        width: 90%;
+        // margin: 0 auto;
+        padding: 15px;
+
+        .input_bar{
+            display: flex;
+            flex-direction: column;
+            
+
+            input{
+                background-color: transparent;
+                outline: transparent;
+                color: white;
+                border: transparent;
+                border-bottom: 2px solid white;
+                margin-top: 10px;
+                font-size: 1.1rem;
+            }
+
+        }
+    }
+}
+
+.submit_btn_signup{
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 20px;
+    button{
+        background-color: $pri;
+        padding: 10px 15px;
+        border: transparent;
+        cursor: pointer;
+        font-weight: 600;
+    }
+}
+
+.continue_cbox{
+    width: 90%;
+    padding: 15px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: space-between;
+    // border: solid white;
+
+    .cont_text{
+        font-size: 1.2rem;
+        font-weight: 600;
+    }
+    input{
+        outline: $pri;
+        margin-right: 15px;
+        margin-left: 4px;
+    }
+    input:checked:after{
+        margin-right: 15px;
+        margin-left: 4px;
+        background-color: $pri;
+    }
+
+}
+
+.lower_alert{
+    color: rgb(248, 46, 46);
+}
