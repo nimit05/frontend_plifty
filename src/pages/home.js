@@ -44,6 +44,7 @@ class Home extends React.Component{
         {id : '3' , img : exercise}
     ]
     }
+
   }
 
   render(){

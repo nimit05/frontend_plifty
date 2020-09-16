@@ -5,62 +5,7 @@ import {CreateUser} from '../redux'
 
 class Signup extends React.Component{
 
-    Signup = () => {
-
-        if(document.getElementById('password').value !== document.getElementById('cpassword').value){
-            this.setState(() => {
-                return{
-                    match_pass : false
-                }
-            })
-        }else{
-            this.setState(() => {
-                return{
-                    match_pass : true
-                }
-            })
-
-            let type  = ''
-            if(document.getElementById('player_cb').checked == true){
-                type = "player"
-            }
-            if(document.getElementById('expert_cb').checked == true){
-                type = "expert"
-            }
-            let data = {
-                f_name : document.getElementById('f_name').value,
-                l_name : document.getElementById('l_name').value,
-                email : document.getElementById('email').value,
-                password : document.getElementById('password').value,
-                phone_num : document.getElementById('phone_num').value,
-                type : type,
-        }
-
-        fetch('/api/register' , {
-            method : "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify(data)
-        }).then((res) => res.json())
-        .then((data) => {
-            alert('done')
-        })
-        
-    }
-    }
-
-    constructor(props){
-        super(props)
-
-        this.state = {
-            inv_email : false,
-            inv_phone : false,
-            match_pass : true
-        }
-    }
-
-    componentDidMount = () => {
+    ValidUsers = () => {
         if(this.props.error.indexOf('phone') != -1){
             this.setState(() => {
                 return{
@@ -76,6 +21,63 @@ class Signup extends React.Component{
             })
         }
     }
+
+    Signup = async() => {
+
+        if(document.getElementById('password').value !== document.getElementById('cpassword').value){
+            this.setState(() => {
+                return{
+                    match_pass : false
+                }
+            })
+        }else{
+            this.setState(() => {
+                return{
+                    match_pass : true
+                }
+            })
+
+            let conti  = ''
+            if(document.getElementById('player_cb').checked == true){
+                conti = "player"
+            }
+            if(document.getElementById('expert_cb').checked == true){
+                conti = "expert"
+            }
+            let data = {
+                f_name : document.getElementById('f_name').value,
+                l_name : document.getElementById('l_name').value,
+                email : document.getElementById('email').value,
+                password : document.getElementById('password').value,
+                phone_num : document.getElementById('phone_num').value,
+                type : conti,
+        }
+
+        await this.props.CreateUser(data)
+
+        this.setState(() => {
+            return{
+                inv_email : false,
+                inv_phone : false
+            }
+        })
+
+       await this.ValidUsers()
+        
+    }
+    }
+
+    constructor(props){
+        super(props)
+
+        this.state = {
+            inv_email : false,
+            inv_phone : false,
+            match_pass : true
+        }
+    }
+
+   
     render(){
         return(
             <div className = "signup_page">
@@ -103,6 +105,11 @@ class Signup extends React.Component{
                             <div className = "input_bar">
                                 <label for = "email">E-Mail</label>
                                 <input id = "email" name = "email" type = "email" />
+                                {this.state.inv_email && (
+                                    <div className = "lower_alert">
+                                        {this.props.error}
+                                    </div>
+                                    )}
                             </div>
                         </div>
                         <div className = "input_feilds_sp">
@@ -110,6 +117,11 @@ class Signup extends React.Component{
                             <div className = "input_bar">
                                 <label for = "phone_num">Phone Number</label>
                                 <input id = "phone_num" name = "phone_num" />
+                                {this.state.inv_phone && (
+                                    <div className = "lower_alert">
+                                        {this.props.error}
+                                    </div>
+                                    )}
                             </div>
                         </div>
                         <div className = "input_feilds_sp">

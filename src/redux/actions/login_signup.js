@@ -24,7 +24,7 @@ import {FETCH_SIGNUP_BEGIN
     export const CreateUser = (data) => {
         return dispatch => {
             dispatch(signupBegin())
-            return fetch('/api/signup' , {
+            return fetch('/api/register' , {
                 method : "POST",
                 headers: {
                     "Content-Type": "application/json"
