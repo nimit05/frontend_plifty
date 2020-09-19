@@ -1,0 +1,218 @@
+.feeds{
+    max-width: 550px;
+    min-width: 500px;
+    // height: 300px;
+    // border: 1px solid $border;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 20px;
+    background-color: $l_main;
+    box-shadow: 5px 10px 18px #272727;
+}
+
+.feed_inner_body{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0;
+    border-bottom: 1px solid $border;
+
+    .feed_by{
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        // margin-top: 15px;
+
+        img{
+            height: 30px;
+            margin-right: 10px;
+        }
+
+        .player_name_feed{
+            .name{
+                font-size: 1.2rem;
+                font-weight: 600;
+            }
+            .time{
+                font-size: 0.9rem;
+                color: rgb(110, 110, 110);
+            }
+        }
+    }
+
+    .match_type_feed{
+        font-size: 1.3rem;
+        font-weight: 600;
+        margin-left: 10%;
+        // margin-left: 20px;
+        margin-top: 15px;
+    }
+
+    .match_opponents_pic{
+        width: 55%;
+        margin-left: 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        margin-top: 15px;
+        img{
+            height: 50px;
+        }
+
+        .vs_logo{
+            img{
+                height: 80px;
+            }
+        }
+
+        .challenger{
+            width: 50px;
+            height: 50px;
+            border-radius: 50px;
+            border: solid white;
+        }
+    }
+
+    .match_fixed_details{
+        width: 85%;
+        margin-left: 10%;
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        margin-top: 15px;
+        font-size: 1.1rem;
+        
+        .head{
+            font-weight: 600;
+        }
+
+        .match_length{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 20%;
+            // border: solid white;
+            
+        }
+
+        .match_veneu{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
+            // border: solid white;  
+
+            .head{
+                width: 25%;
+            }
+            .val{
+                width: 75%;
+                text-align: left;
+            }
+        }
+
+        .match_time{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            // border: solid white; 
+            width: 30%;
+        }
+        .match_date{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 60%;
+            // border: solid white; 
+
+            .val{
+                width: 75%;
+                text-align: left;
+            }
+        }
+    }
+
+    .player_polls{
+        // width: 40%;
+        margin-top: 15px;
+        margin-left: 10%;
+
+        .challenger_pole{
+            display: flex;
+            flex-direction: row;
+            // justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+
+            .img{
+                width: 30px;
+                height: 30px;
+                border-radius: 30px;
+                
+                img{
+                    height: 30px;
+                }
+            }
+        }
+
+        .pole_er{
+            // border: 1px solid $border;
+            width: 60%;
+            height: 10px;
+            margin-left: 25px;
+            width: 100px;
+            background-color: red;
+        }
+        .pole_ee{
+            // border: 1px solid $border;
+            width: 60%;
+            height: 10px;
+            margin-left: 25px;
+            width: 200px;
+            background-color: green;
+        }
+
+        .total_votes{
+            font-size: 1.1rem;
+            font-weight: 600;
+            // margin-bottom: 10px;
+        }
+    }
+
+}
+
+.opponents_poles_option{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    // border: 1px solid $border;
+    
+
+    .player_name{
+        width: 50%;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 1.2rem;
+        cursor: pointer;
+        border-left: 1px solid rgb(155, 155, 155)
+
+    }
+    .player_name_er{
+        width: 50%;
+        text-align: center;
+        padding: 5px 0;
+        font-size: 1.2rem;
+        cursor: pointer;
+
+    }
+    .player_name:hover{
+        background-color: $border;
+    }
+    .player_name_er:hover{
+        background-color: $border;
+    }
+}

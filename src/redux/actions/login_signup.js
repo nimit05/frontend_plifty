@@ -24,7 +24,7 @@ import {FETCH_SIGNUP_BEGIN
     export const CreateUser = (data) => {
         return dispatch => {
             dispatch(signupBegin())
-            return fetch('/api/register' , {
+            return fetch('/api/signup' , {
                 method : "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -48,10 +48,9 @@ import {FETCH_SIGNUP_BEGIN
         }
     }
     
-    export const loginSuccess = (name) => {
+    export const loginSuccess = () => {
         return{
             type : FETCH_LOGIN_SUCCESS,
-            payload : name
         }
     }
     
@@ -75,8 +74,8 @@ import {FETCH_SIGNUP_BEGIN
             }).then((res) => res.json())
             .then((data) => {
                 console.log(data)
-                if(data.error){
-                    dispatch(loginFail(data.error));
+                if(data.err){
+                    dispatch(loginFail(data.err));
                 }
                 else if(data){
                     dispatch(loginSuccess(data.username));

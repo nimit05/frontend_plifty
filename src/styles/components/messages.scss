@@ -1,0 +1,62 @@
+.messages{
+    width: 20%;
+    min-width: 260px;
+    height : 430px;
+    position: sticky;
+    border: 1px solid $border;
+    top: 70px;
+    color: white;
+    background-color: $l_main;
+    box-shadow: 5px 10px 18px #1d1d1d;
+ 
+
+    .message_heading{
+        width: 100%;
+        padding: 7px 0;
+        color: white;
+        font-size: 1.2rem;
+        border-bottom: 1px solid $border;
+        // background-color: $pri;
+        text-align: center;
+        font-weight: 600;
+        
+    }
+}
+
+.messages_lis{
+    overflow-y: scroll;
+    height: 390px;
+
+}
+
+
+
+
+.message_row{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 10px 0;
+    border-bottom: 0.5px solid $l_main;
+    cursor: pointer;
+
+    .msg_img{
+        img{
+            height: 25px;
+        }
+    }
+}
+
+.msg_div{
+    display: flex;
+    flex-direction: column;
+
+    .msg_sender{
+        font-weight: 600;
+    }
+    .msg_body{
+        font-size: 0.9rem;
+        // color: $l_main;
+    }
+}

@@ -1,10 +1,8 @@
 import React from 'react';
-import pwithfreinds from '../images/pwithfreinds.jpg';
-import tournament from '../images/tournament.jpg';
-import teams from '../images/teams.jpg';
-import exercise from '../images/exercise.jpg'
-import next from '../images/next.svg';
-import back from '../images/back.svg';
+import ProfileCard from '../containers/profileCard';
+import Feeds from '../containers/feeds';
+import Messages from '../containers/messages';
+import RecentUpdates from '../containers/recent_updates';
 
 class Home extends React.Component{
 
@@ -37,29 +35,34 @@ class Home extends React.Component{
 
     this.state = {
       i : 0,
-      images : [
-        {id : '0' , img : pwithfreinds},
-        {id : '1' , img : tournament },
-        {id : '2' , img : teams },
-        {id : '3' , img : exercise}
-    ]
+      arr : [1,1,1,1,1,1,1,1,1,1,1]
     }
+
+    fetch('/api/login/session')
+    .then((res) => res.json())
+    .then((data) => {
+      if(!data.token){
+        localStorage.clear()
+      }
+    })
 
   }
 
   render(){
     return(
       <div className = "home">
-            <div className = "home_img_card">
-                <img src = {this.state.images[this.state.i].img} />
-                <div className = "next_img_button" onClick = {this.handleNext}>
-                  <img src = {next} />
-                </div>
-                <div className = "back_img_button" onClick = {this.handlePrev}>
-                  <img src = {back} />
-                </div>
-            </div>
-      
+          <div className = "lef_home_pro_up">
+            <ProfileCard />
+            <RecentUpdates />
+          </div>
+          <div className = "home_feeds">
+          {this.state.arr.map(e => {
+            return(
+              <Feeds />
+            )
+          })}
+          </div>
+          <Messages />
       </div>
     )
   }

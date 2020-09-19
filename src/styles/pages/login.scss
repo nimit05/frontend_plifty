@@ -1,3 +1,82 @@
 .login_page{
-    margin-top: 80px;
+    margin-top: 50px;
+    width: 30%;
+    min-width: 450px;
+    margin-left: auto;
+    margin-right: auto;
+    // border: solid white;
+    color: white;
+}
+
+.site_name_lp{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100px;
+    margin: 0 auto;
+    margin-bottom: 30px;
+    // border: solid white;    
+    text-align: center;
+    cursor: pointer;
+    .icon{
+        width: 30px;
+        height: 30px;
+        border-radius: 35px;
+        background-color: $pri;
+        margin-right: 5px;
+    }
+    .name{
+        font-weight: 700;
+        font-size: 1.7rem;
+    }
+}
+
+.login_heading{
+    width: 80px;
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 30px;
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.input_feild_lp{
+    width: 65%;
+    // border: solid white;
+    margin-left: auto;
+    margin-right: auto;
+    // padding: 10px;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px;
+
+    label{
+        font-size: 1.3rem;
+        font-weight: 600;
+    }
+
+    input{
+        width: 90%;
+        background-color: transparent;
+        outline: $pri;
+        color: white;
+        border: 1px solid white;
+        // border-bottom: 2px solid white;
+        margin-top: 8px;
+        font-size: 1.1rem;
+    }
+}
+
+.login_button{
+    width: 20%;
+    margin: 0 auto;
+    margin-top: 20px;
+    button{
+        background-color: $pri;
+        padding: 10px 15px;
+        border: transparent;
+        cursor: pointer;
+        font-weight: 600;
+    }
 }
