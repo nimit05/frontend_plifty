@@ -12,10 +12,32 @@ class Header extends React.Component{
             this.state = {
                 search_bar : false
         }
+
+        fetch('/api/login/session')
+        .then((res) => res.json())
+        .then((data) => {
+          if(!data.token){
+            localStorage.clear()
+          }
+        })
+    }
+    async componentDidMount(){
+
+        let header = await document.querySelector('#header')
+        
+        window.onscroll = () => {
+        
+            var top = window.scrollY
+            if(top >= 10){
+                header.classList.add('active')
+            }else{
+                header.classList.remove('active')
+            }
+        }
     }
     render(){
         return(
-            <div className = "header">
+            <div className = "header" id = "header">
                 <div className = "header_inside_div">
                 
                     <div className = "name_logo">
@@ -39,14 +61,15 @@ class Header extends React.Component{
                                 Tournaments
                             </div>
                             <div className = "link">
-                                Profile
+                                Players     
                             </div>
                             <div className = "link">
-                                About Us    
+                                Messages
                             </div>
                             <div className = "link">
-                                <img src = {notif} alt = "" />
+                                Updates
                             </div>
+                            
                     </div>
                     ) : (
                         <div className = "login_signup_links">

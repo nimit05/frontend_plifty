@@ -1,6 +1,27 @@
 .home{
     color: white;
-    margin-top: 90px;
+    margin-top: 75px;
+    min-width: 1100px;
+    width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+    // border: solid white;
+    display: flex;
+    flex-direction: row;
+}
+
+.home_feeds{
+    width: 520px;
+    margin: 0 32.5px;
+    // border: solid white;
+
+}
+
+.lef_home_pro_up{
+    width: 250px;
+    display: flex;
+    flex-direction: column;
+    // border: solid white;
 }
 
 .home_img_card{
