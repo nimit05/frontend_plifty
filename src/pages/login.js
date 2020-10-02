@@ -43,14 +43,10 @@ class Login extends React.Component{
         }
     }
 
-    constructor(props){
-        super(props)
-
-        this.state = {
+        state = {
             inv_user : false,
             inv_pass : false
         }
-    }
 
     render(){
         return(
@@ -87,6 +83,11 @@ class Login extends React.Component{
                         Login
                     </button>
                 </div>
+                <div className = "signup_route" >
+                    New to Plifty ? <a onClick = {() => {
+                    window.location.href = "/signup"
+                }}>Sign Up</a>
+                </div>
             </div>
         )
     }
@@ -96,7 +97,7 @@ const mapStateToProps = state => {
     return{
         error : state.login.error ,
         loggedin : state.login.loggedin,
-        loading : state.login.loading
+        loading : state.login.loading,
     }
 }
 

@@ -60,12 +60,12 @@ class Header extends React.Component{
                             <div className = "link">
                                 Tournaments
                             </div>
-                            <div className = "link">
-                                Players     
-                            </div>
-                            <div className = "link">
+                            <Link to = "/players" className = "link">
+                                Players
+                            </Link>
+                            <Link to = "/messages" className = "link">
                                 Messages
-                            </div>
+                            </Link>
                             <div className = "link">
                                 Updates
                             </div>

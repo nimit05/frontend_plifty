@@ -11,7 +11,7 @@
 
 .sign_up_cont{
     width: 100%;
-    border: 1px solid rgb(233, 233, 233);
+    // border: 1px solid rgb(233, 233, 233);
     padding: 10px 0;
 }
 
@@ -21,7 +21,7 @@
     align-items: center;
     width: 25%;
     margin: 0 auto;
-    margin-bottom: 30px;
+    margin-bottom: 0px;
     // border: solid white;
     text-align: center;
     cursor: pointer;
@@ -77,7 +77,7 @@
             outline: $pri;
             color: white;
             border: transparent;
-            border-bottom: 2px solid white;
+            border: 1px solid $border;
             margin-top: 10px;
             font-size: 1.1rem;
         }
@@ -98,7 +98,7 @@
                 outline: transparent;
                 color: white;
                 border: transparent;
-                border-bottom: 2px solid white;
+                border: 1px solid $border;
                 margin-top: 10px;
                 font-size: 1.1rem;
             }
@@ -149,4 +149,15 @@
 .lower_alert{
     color: white;
     margin-top: 4px;
+}
+
+.login_route{
+    width: 100%;
+    text-align: center;
+    margin-top: 10px;
+
+    a{
+        color: $pri;
+        cursor: pointer;
+    }
 }

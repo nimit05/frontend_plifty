@@ -1,0 +1,32 @@
+.messages_page{
+    margin-top: 180px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    border: solid white;
+    width: 1100px;
+    height: 500px;
+
+    input{
+        width: 300px;
+        background-color: transparent;
+        outline: $pri;
+        color: white;
+        border: 1px solid white;
+        // border-bottom: 2px solid white;
+        margin-top: 8px;
+        font-size: 1.1rem;
+       
+    
+    }
+
+    .messages_from_eother{
+        margin-top: 20px;
+        font-size: 1.5rem;
+        overflow-y: scroll;
+
+        .chat_f_in_box{
+            margin-bottom: 15px;
+        }
+    }
+}

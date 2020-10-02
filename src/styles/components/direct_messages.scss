@@ -1,0 +1,61 @@
+.dm_cont_upd{
+    margin-left: auto;
+    margin-right: 20px;
+    width: 350px;
+    border: 2px solid $border;
+    transition: 2s, height 4s, width 1s;
+}
+
+.direct_messages{
+    width: 350px;
+    height: 50px;
+    background-color: $pri;
+    margin-left: auto;
+    margin-right: 20px;
+    cursor: pointer;
+
+    .chat_user_name{
+        font-size: 1.2rem;
+        font-weight: 600;
+        
+        padding: 10px;
+        text-align: center;
+    }
+}
+
+.msg_room{
+    background-color: rgb(236, 235, 235);
+    width: 350px;
+    height: 500px;
+
+    .msg_hall_div{
+        width: 100%;
+        height: 450px;
+        border: solid black;
+
+         .chat_f_in_box{
+            margin-bottom: 15px;
+            width: 100%;
+
+            .message_by_me{
+                text-align: right;
+            }
+            .message_by_another{
+                text-align: left;
+            }
+        }
+    }
+
+    .type_message{
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        textarea{
+            padding: 10px;
+            width: 280px;
+            height: 30px;
+            font-size: 1.1rem;
+        }
+    }
+}

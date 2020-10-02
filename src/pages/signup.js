@@ -6,20 +6,24 @@ import {CreateUser} from '../redux'
 class Signup extends React.Component{
 
     ValidUsers = () => {
-        if(this.props.error.indexOf('phone') != -1){
-            this.setState(() => {
-                return{
-                    inv_phone : true
-                }
-            })
+        if(typeof(this.props.error) == 'string'){
+            if(this.props.error.indexOf('phone') != -1){
+                this.setState(() => {
+                    return{
+                        inv_phone : true
+                    }
+                })
+            }
+            else if(this.props.error.indexOf('email') != -1){
+                this.setState(() => {
+                    return{
+                        inv_email : true
+                    }
+                })
+            }
         }
-        else if(this.props.error.indexOf('email') != -1){
-            this.setState(() => {
-                return{
-                    inv_email : true
-                }
-            })
-        }
+
+        window.location.href = '/'
     }
 
     Signup = async() => {
@@ -62,7 +66,10 @@ class Signup extends React.Component{
             }
         })
 
+    
        await this.ValidUsers()
+
+
         
     }
     }
@@ -90,12 +97,14 @@ class Signup extends React.Component{
                 <div className = "sign_up_cont">
                     <div className = "sign_up_heading">Sign Up</div>
                     <div className = "signup_details">
-                        <div className = "comp_name">
-                            <div className = "f_name">
+                        <div className = "input_feilds_sp">
+                            <div className = "input_bar">
                                 <label for = "f_name">First Name</label>
                                 <input id = "f_name" name = "f_name" />
                             </div>
-                            <div className = "l_name">
+                        </div>
+                        <div className = "input_feilds_sp">
+                            <div className = "input_bar">
                                 <label for = "l_name">Last Name</label>
                                 <input id = "l_name" name = "l_name" />
                             </div>
@@ -119,7 +128,7 @@ class Signup extends React.Component{
                                 <input id = "phone_num" name = "phone_num" />
                                 {this.state.inv_phone && (
                                     <div className = "lower_alert">
-                                        {this.props.error}
+                                        {typeof(this.props.error) == 'string' && this.props.error}
                                     </div>
                                     )}
                             </div>
@@ -156,6 +165,12 @@ class Signup extends React.Component{
                         </div>
                         <div className = "submit_btn_signup">
                             <button onClick = {this.Signup}>Sign Up</button>
+                        </div>
+                        <div className = "login_route">
+                            Have an Account ? 
+                            <a onClick = {() => {
+                                window.location.href = "/login"
+                            }}> Login</a>
                         </div>
                       
                     </div>

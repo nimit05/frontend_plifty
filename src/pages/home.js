@@ -3,6 +3,7 @@ import ProfileCard from '../containers/profileCard';
 import Feeds from '../containers/feeds';
 import Messages from '../containers/messages';
 import RecentUpdates from '../containers/recent_updates';
+import ChatTabs from '../containers/chat_tabs'
 
 class Home extends React.Component{
 
@@ -51,6 +52,7 @@ class Home extends React.Component{
   render(){
     return(
       <div className = "home">
+
           <div className = "lef_home_pro_up">
             <ProfileCard />
             <RecentUpdates />

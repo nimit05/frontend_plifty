@@ -4,7 +4,8 @@ FETCH_LOGIN_BEGIN , FETCH_LOGIN_FAILS , FETCH_LOGIN_SUCCESS  ,FETCH_SIGNOUT_SUCC
 const initialStateLogin = {
     loading : false,
     loggedin : false,
-    error : ''
+    error : '',
+    user : {}
 }
 
 const LoginReducers = (state = initialStateLogin , action) => {
@@ -19,7 +20,8 @@ const LoginReducers = (state = initialStateLogin , action) => {
             ...state,
             loading : false,
             loggedin : true,
-            error : ''
+            error : '',
+            user : action.payload
             }
         case FETCH_LOGIN_FAILS : 
         return{

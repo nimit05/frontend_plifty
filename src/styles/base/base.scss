@@ -5,3 +5,18 @@ body{
     background-color: $main;
 }
 
+// * {
+//     // overflow-x: hidden;
+//     // -ms-overflow-style: none;
+//   }
+  *::-webkit-scrollbar {
+    display: none;
+  }
+
+  .bottom_msg_row{
+    width: 99%;
+    // border: solid white;
+    // height: 50px;
+    position: fixed;
+    bottom: 5px;
+}
