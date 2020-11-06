@@ -1,43 +1,14 @@
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import ProfileCard from '../containers/profileCard';
 import Feeds from '../containers/feeds';
 import Messages from '../containers/messages';
 import RecentUpdates from '../containers/recent_updates';
 import ChatTabs from '../containers/chat_tabs'
 
-class Home extends React.Component{
-
-  handleNext = () => {
-
-    if(this.state.i < this.state.images.length - 1){
-
-    this.setState((prevState) => {
-      return{
-        i : prevState.i + 1
-      }
-    })
-  }
-  }
-
-  handlePrev = () => {
-
-    if(this.state.i > 0){
-
-    this.setState((prevState) => {
-      return{
-        i : prevState.i - 1
-      }
-    })
-  }
-  }
-
-  constructor(props){
-    super(props)
-
-    this.state = {
-      i : 0,
-      arr : [1,1,1,1,1,1,1,1,1,1,1]
-    }
+function Home(){
+  
+  const arr = [1,1,1,1,11,1,11,1]
+  useEffect( () => {
 
     fetch('/api/login/session')
     .then((res) => res.json())
@@ -45,11 +16,10 @@ class Home extends React.Component{
       if(!data.token){
         localStorage.clear()
       }
-    })
+    } )
+  } ,)
 
-  }
 
-  render(){
     return(
       <div className = "home">
 
@@ -58,7 +28,7 @@ class Home extends React.Component{
             <RecentUpdates />
           </div>
           <div className = "home_feeds">
-          {this.state.arr.map(e => {
+          {arr.map(e => {
             return(
               <Feeds />
             )
@@ -68,7 +38,7 @@ class Home extends React.Component{
       </div>
     )
   }
-}
+
 
 export default Home;
 

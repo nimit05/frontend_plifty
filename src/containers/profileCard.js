@@ -4,8 +4,7 @@ import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {SignOut} from '../redux'
 
-class ProfileCard extends React.Component{
-    render(){
+function ProfileCard(props){
         return(
             <div className = "profile_card">
                 <div className = "player_img">
@@ -32,13 +31,13 @@ class ProfileCard extends React.Component{
                         </div>
                     </div>
                 </div>
-                <div className = "sign_out_pcard" onClick = {() => this.props.Signout()}>
+                <div className = "sign_out_pcard" onClick = {() => props.Signout()}>
                     Sign Out
                 </div>
             </div>
         )
     }
-}
+
 
 const mapStateToProps = state => {
     return{

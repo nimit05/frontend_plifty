@@ -1,9 +1,8 @@
-import React from 'react';
+import React , {useState} from 'react';
 import propic from '../images/propic.svg';
 import versus from '../images/versus.svg'
 
-class Feeds extends React.Component{
-    render(){
+function Feeds(){
         return(
             <div className = "feeds">
                 <div className = "feed_inner_body">
@@ -79,6 +78,6 @@ class Feeds extends React.Component{
             </div>
         )
     }
-}
+
 
 export default Feeds

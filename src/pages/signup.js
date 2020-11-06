@@ -1,45 +1,35 @@
-import React from 'react';
+import React , {useState} from 'react';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {CreateUser} from '../redux'
 
-class Signup extends React.Component{
+function Signup(props){
 
-    ValidUsers = () => {
-        if(typeof(this.props.error) == 'string'){
-            if(this.props.error.indexOf('phone') != -1){
-                this.setState(() => {
-                    return{
-                        inv_phone : true
-                    }
-                })
+    const [inv_email , setInv_email] = useState(false)
+    const [inv_phone , setInv_phone] = useState(false)
+    const [match_pass , setMatch_pass] = useState(true)
+    const [userData , setUserData] = useState({f_name : " " , l_name : " " ,
+    email : " " , password : " " , phone_num : " " , type : " "})
+    const error = props.error
+    const ValidUsers = () => {
+        if(typeof(error) == 'string'){
+            if(error.indexOf('phone') != -1){   
+                setInv_phone(true)
             }
-            else if(this.props.error.indexOf('email') != -1){
-                this.setState(() => {
-                    return{
-                        inv_email : true
-                    }
-                })
+            else if(error.indexOf('email') != -1){
+                setInv_email(true)
             }
         }
 
         window.location.href = '/'
     }
 
-    Signup = async() => {
+    const Signup = async() => {
 
         if(document.getElementById('password').value !== document.getElementById('cpassword').value){
-            this.setState(() => {
-                return{
-                    match_pass : false
-                }
-            })
+            setMatch_pass(false)
         }else{
-            this.setState(() => {
-                return{
-                    match_pass : true
-                }
-            })
+           setMatch_pass(true)
 
             let conti  = ''
             if(document.getElementById('player_cb').checked == true){
@@ -48,44 +38,18 @@ class Signup extends React.Component{
             if(document.getElementById('expert_cb').checked == true){
                 conti = "expert"
             }
-            let data = {
-                f_name : document.getElementById('f_name').value,
-                l_name : document.getElementById('l_name').value,
-                email : document.getElementById('email').value,
-                password : document.getElementById('password').value,
-                phone_num : document.getElementById('phone_num').value,
-                type : conti,
-        }
+            setUserData({...userData , type : conti})
 
-        await this.props.CreateUser(data)
+        await props.CreateUser(userData)
 
-        this.setState(() => {
-            return{
-                inv_email : false,
-                inv_phone : false
-            }
-        })
-
+        setInv_email(false)
+        setInv_phone(false)
     
-       await this.ValidUsers()
-
-
+       await ValidUsers()
         
     }
     }
 
-    constructor(props){
-        super(props)
-
-        this.state = {
-            inv_email : false,
-            inv_phone : false,
-            match_pass : true
-        }
-    }
-
-   
-    render(){
         return(
             <div className = "signup_page">
                 <div className = "site_name_sp" onClick = {() => {
@@ -100,23 +64,29 @@ class Signup extends React.Component{
                         <div className = "input_feilds_sp">
                             <div className = "input_bar">
                                 <label for = "f_name">First Name</label>
-                                <input id = "f_name" name = "f_name" />
+                                <input id = "f_name" name = "f_name" value = {userData.f_name} onChange = {
+                                    e => setUserData({...userData , f_name : e.target.value})
+                                }/>
                             </div>
                         </div>
                         <div className = "input_feilds_sp">
                             <div className = "input_bar">
                                 <label for = "l_name">Last Name</label>
-                                <input id = "l_name" name = "l_name" />
+                                <input id = "l_name" name = "l_name" value = {userData.l_name} onChange = {
+                                    e => setUserData({...userData , l_name : e.target.value})
+                                } />
                             </div>
                         </div>
                         <div className = "input_feilds_sp">
                             <div className = "icon"></div>
                             <div className = "input_bar">
                                 <label for = "email">E-Mail</label>
-                                <input id = "email" name = "email" type = "email" />
-                                {this.state.inv_email && (
+                                <input id = "email" name = "email" type = "email" value = {userData.email} onChange = {
+                                    e => setUserData({...userData , email : e.target.value})
+                                } />
+                                {inv_email && (
                                     <div className = "lower_alert">
-                                        {this.props.error}
+                                        {props.error}
                                     </div>
                                     )}
                             </div>
@@ -125,10 +95,12 @@ class Signup extends React.Component{
                             <div className = "icon"></div>
                             <div className = "input_bar">
                                 <label for = "phone_num">Phone Number</label>
-                                <input id = "phone_num" name = "phone_num" />
-                                {this.state.inv_phone && (
+                                <input id = "phone_num" name = "phone_num" value = {userData.phone_num} onChange = {
+                                    e => setUserData({...userData , phone_num : e.target.value})
+                                } />
+                                {inv_phone && (
                                     <div className = "lower_alert">
-                                        {typeof(this.props.error) == 'string' && this.props.error}
+                                        {typeof(props.error) == 'string' && props.error}
                                     </div>
                                     )}
                             </div>
@@ -137,7 +109,9 @@ class Signup extends React.Component{
                             <div className = "icon"></div>
                             <div className = "input_bar">
                                 <label for = "password">Password</label>
-                                <input id = "password" name = "password" type = "password" />
+                                <input id = "password" name = "password" type = "password" value = {userData.password} onChange = {
+                                    e => setUserData({...userData , password : e.target.value})
+                                } />
                             </div>
                         </div>
                         <div className = "input_feilds_sp">
@@ -146,7 +120,7 @@ class Signup extends React.Component{
                                 <label for = "password">Confirm Password</label>
                                 <input id = "cpassword" name = "password" type = "password" />
                             </div>
-                            {!this.state.match_pass && (
+                            {!match_pass && (
                                 <div className = "lower_alert">
                                     password does not match
                                 </div>
@@ -164,7 +138,7 @@ class Signup extends React.Component{
                             </div>
                         </div>
                         <div className = "submit_btn_signup">
-                            <button onClick = {this.Signup}>Sign Up</button>
+                            <button onClick = {Signup}>Sign Up</button>
                         </div>
                         <div className = "login_route">
                             Have an Account ? 
@@ -178,7 +152,7 @@ class Signup extends React.Component{
             </div>
         )
     }
-}
+
 
 const mapStateToProps = state => {
     return{

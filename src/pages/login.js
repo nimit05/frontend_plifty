@@ -1,54 +1,35 @@
-import React from 'react'
+import React , {useState} from 'react'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {login} from '../redux'
 
-class Login extends React.Component{
+function Login(props){
 
-    handleLogin = async() => {
+    const [inv_user , setInv_user] = useState(false)
+    const [inv_pass , setInv_pass] = useState(false)
+    const [logindata , setLogindata] = useState({username_lp : " " , password_lp : " "})
 
-        let data = {
-            username : document.getElementById('username_lp').value,
-            password : document.getElementById('password_lp').value
-        }
+    const handleLogin = async() => {
+       
+        setInv_pass(false)
+        setInv_user(false)
 
-        this.setState(() => {
-            return{
-                inv_user : false,
-                inv_pass : false
-            }
-        })
-
-        await this.props.login(data)
-        await this.IsUser()
+        await props.login(logindata)
+        await IsUser()
     }
 
-    IsUser = () => {
+    const IsUser = () => {
     
-         if(this.props.error.indexOf('username') != -1){
-            this.setState(() => {
-                return{
-                    inv_user : true
-                }
-            })
+         if(props.error.indexOf('username') != -1){
+            setInv_user(true)
         }
-        else if(this.props.error.indexOf('password') != -1){
-            this.setState(() => {
-                return{
-                    inv_pass : true
-                }
-            })
+        else if(props.error.indexOf('password') != -1){
+            setInv_pass(true)
         }else{
             window.location.href = '/'
         }
     }
 
-        state = {
-            inv_user : false,
-            inv_pass : false
-        }
-
-    render(){
         return(
             <div className = "login_page">
                 <div className = "site_name_lp" onClick = {() => {
@@ -62,24 +43,26 @@ class Login extends React.Component{
                 </div>
                 <div className = "input_feild_lp">
                     <label for = "username">Email</label>
-                    <input type = "email" name = "username" id = "username_lp" />
-                    {this.state.inv_user && (
+                    <input type = "email" name = "username" id = "username_lp" value = {logindata.username_lp}
+                     onChange = {e => setLogindata({...logindata , username_lp : e.target.value})} />
+                    {inv_user && (
                         <div className = "lower_alert">
-                            {this.props.error}
+                            {props.error}
                         </div>
                         )}
                 </div>
                 <div className = "input_feild_lp">
                     <label for = "password">Password</label>
-                    <input type = "password" name = "password" id = "password_lp" />
-                    {this.state.inv_pass && (
+                    <input type = "password" name = "password" id = "password_lp" value = {logindata.password_lp}
+                     onChange = {e => setLogindata({...logindata , password_lp : e.target.value})} />
+                    {inv_pass && (
                         <div className = "lower_alert">
-                            {this.props.error}
+                            {props.error}
                         </div>
                         )}
                 </div>
                 <div className = "login_button">
-                    <button onClick = {this.handleLogin}>
+                    <button onClick = {handleLogin}>
                         Login
                     </button>
                 </div>
@@ -91,7 +74,7 @@ class Login extends React.Component{
             </div>
         )
     }
-}
+
 
 const mapStateToProps = state => {
     return{

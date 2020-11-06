@@ -1,13 +1,12 @@
 import React from 'react'
 
-class ChatTabs extends React.Component{
-    render(){
+function ChatTabs(){
         return(
             <div className = "chat_tab">
 
             </div>
         )
     }
-}
+
 
 export default ChatTabs

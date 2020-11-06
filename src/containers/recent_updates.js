@@ -1,18 +1,11 @@
-import React from 'react';
+import React , {useState} from 'react';
 import propic from '../images/propic.svg'
 
-class RecentUpdates extends React.Component{
-    constructor(props){
-        super(props)
-
-        this.state = {
-            arr : [1,1,1]
-        }
-    }
-    render(){
+function RecentUpdates(props){
+   const arr = [1,1,1]
         return(
             <div className = "recent_updates">
-                {this.state.arr.map(e => {
+                {arr.map(e => {
                     return(
                     <div className = "update_text">
                         <div className = "text">
@@ -33,7 +26,7 @@ class RecentUpdates extends React.Component{
                 </div>
             </div>
         )
-    }
+    
 }
 
 export default RecentUpdates;

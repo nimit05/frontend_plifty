@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {GetSpecific ,GetChats , AddChatOUt} from '../redux'
 import io from 'socket.io-client';
-import moment from 'moment'
 
 class DMS extends React.Component{
 
@@ -24,7 +23,7 @@ class DMS extends React.Component{
         .then((data) => {
             if(data){
                 this.setState({roomId : data.id})
-                this.props.GetChats(this.state.roomId);
+                this.props.GetChats(data.id);
             }else{
                 this.CreateNewRoom()
             }
@@ -35,19 +34,7 @@ class DMS extends React.Component{
         })
     }
 
-    CreateNewRoom = () => {
-        let data = {
-            userId : this.props.user.Id,
-            playerId : this.props.playerId
-        }
-        fetch(`/api/chat/room?id1=${this.props.player.Id}&id2=${this.props.user.Id}` , {
-            method : 'post',
-            headers : {
-                "Content-Type" : "application/json"
-            },
-            body : JSON.stringify(data)
-        }).then((res) => res.json)
-    }
+    
 
      Handledm = () => {
 

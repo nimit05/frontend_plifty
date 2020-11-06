@@ -1,27 +1,22 @@
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import { Link } from "react-router-dom";
-import notif from '../images/bell.svg'
 import search from '../images/search.svg'
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {SignOut} from '../redux'
 
-class Header extends React.Component{
-    constructor(props){
-        super(props)
-            this.state = {
-                search_bar : false
-        }
+function Header(props){
 
-        fetch('/api/login/session')
+    const [search_bar , setSearch_bar] = useState(false)
+
+    useEffect (async() => {
+        await fetch('/api/login/session')
         .then((res) => res.json())
         .then((data) => {
           if(!data.token){
             localStorage.clear()
           }
         })
-    }
-    async componentDidMount(){
 
         let header = await document.querySelector('#header')
         
@@ -34,8 +29,8 @@ class Header extends React.Component{
                 header.classList.remove('active')
             }
         }
-    }
-    render(){
+    } , [])
+    
         return(
             <div className = "header" id = "header">
                 <div className = "header_inside_div">
@@ -49,7 +44,7 @@ class Header extends React.Component{
                             </Link>
                     </div>
                  
-                    {this.props.loggedin ? (
+                    {props.loggedin ? (
                         <div className = "page_links">
                         <div className = "search_header">
                             <input type = "text" placeholder = "Search" />
@@ -95,7 +90,7 @@ class Header extends React.Component{
             </div>
         )
     }
-}
+
 
 const mapStateToProps = state => {
     return{

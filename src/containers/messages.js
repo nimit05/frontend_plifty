@@ -1,23 +1,15 @@
-import React from 'react';
+import React , {useState} from 'react';
 import propic from '../images/propic.svg'
 
-class Messages extends React.Component{
-
-    constructor(props){
-        super(props)
-
-        this.state = {
-            arr : [1,1,1,1,1,1,1 , 1 , 1]
-        }
-    }
-    render(){
+function Messages(){
+    const arr = [1,1,1,1,1,1,1,1]
         return(
             <div className = "messages">
                 <div className = "message_heading">
                     Messages
                 </div>
                 <div className = "messages_lis">
-                    {this.state.arr.map(e => {
+                    {arr.map(e => {
                         return(
                             <div className = "message_row">
                                 <div className = "msg_img">
@@ -39,6 +31,5 @@ class Messages extends React.Component{
             </div>
         )
     }
-}
 
 export default Messages

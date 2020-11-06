@@ -1,17 +1,30 @@
-import React from 'react';
+import React , {useState , useEffect} from 'react';
 import {connect} from 'react-redux'
 import { bindActionCreators } from 'redux';
 import {GetPlayers , AddMsgUser} from '../redux'
 
-class PlayerCard extends React.Component{
+function PlayerCard(props){
 
-    componentDidMount(){
-        this.props.GetPlayers()
+    useEffect(() =>{
+        props.GetPlayers()
+    })
+
+    const CreateNewRoom = () => {
+        let data = {
+            userId : this.props.user.Id,
+            playerId : this.props.playerId
+        }
+        fetch(`/api/chat/room?id1=${this.props.player.Id}&id2=${this.props.user.Id}` , {
+            method : 'post',
+            headers : {
+                "Content-Type" : "application/json"
+            },
+            body : JSON.stringify(data)
+        }).then((res) => res.json)
     }
 
-    render(){
         return(
-            this.props.players.map((player) => {
+            props.players.map((player) => {
                 return(
                     <div className = "player_card">
                     <div className = "player_pic"></div>
@@ -19,7 +32,7 @@ class PlayerCard extends React.Component{
                         {player.FirstName} {' '} {player.LastName}
                     </div>
                     <div className = "msg_btn" onClick = {() => {
-                        this.props.AddMsgUser(player.Id)
+                        props.AddMsgUser(player.Id)
                     }} >
                         Message
                     </div>
@@ -29,7 +42,7 @@ class PlayerCard extends React.Component{
            
         )
     }
-}
+
 
 const mapStateToProps = state => {
     return{
