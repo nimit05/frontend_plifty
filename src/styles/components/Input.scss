@@ -1,0 +1,19 @@
+.input_bar_uni{
+    display: flex;
+    flex-direction: column;
+    
+    label{
+        font-size: 1rem;
+        // font-weight: 600;
+    }
+    input{
+        background-color: transparent;
+        width: 300px;
+        outline: transparent;
+        color: white;
+        border: transparent;
+        border: 1px solid $border;
+        margin-top: 10px;
+        font-size: 1.1rem;
+    }
+}

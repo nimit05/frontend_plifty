@@ -28,6 +28,14 @@ function Home(){
             <RecentUpdates />
           </div>
           <div className = "home_feeds">
+            {/* <div className = "acc_hosting">
+              <button>
+                Create Team
+              </button>
+              <button>
+                Host Tournament
+              </button>
+            </div> */}
           {arr.map(e => {
             return(
               <Feeds />

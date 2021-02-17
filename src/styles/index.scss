@@ -2,16 +2,22 @@
 @import './base/base.scss';
 
 
-@import './components/header.scss';
+@import './container/header.scss';
 @import './pages/home.scss';
 @import './pages/login.scss';
 @import './pages/signup.scss';
-@import './components/profile_card.scss';
-@import './components/feeds.scss';
-@import './components/messages.scss';
-@import './components/recent_updates.scss';
+@import './container/profile_card.scss';
+@import './container/feeds.scss';
+@import './container/messages.scss';
+@import './container/recent_updates.scss';
 @import './pages/messages.scss';
 @import './pages/player.scss';
-@import './components/player_card.scss';
-@import './components/chat_tabs.scss';
-@import './components/direct_messages.scss'
+@import './container/player_card.scss';
+@import './container/chat_tabs.scss';
+@import './container/direct_messages.scss';
+@import './pages/tournaments.scss';
+@import './container/hosted_tourna.scss';
+
+@import './components/Input.scss';
+@import './components/Button.scss';
+@import './pages/teams.scss';

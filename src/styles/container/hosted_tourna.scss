@@ -1,0 +1,118 @@
+.hosted_tourna{
+    height: 100px;
+    padding: 10px;
+    // background-color: $l_main;
+    margin-top: 10px;
+}
+
+.hosted_empty{
+    // width: 500px;
+    margin:0 2px;
+    margin-bottom: 5px;
+
+    .msg{
+        font-size: 1.1rem;
+    }
+    button{
+        padding: 6px;
+        // color: white;
+        background-color: $pri;
+        border: solid $pri;
+        margin-left: 10px;
+        cursor: pointer;
+        border-radius: 4px;
+        font-weight: 600;
+    }
+}
+
+.modal {
+    font-size: 1.2rem;
+    background-color: black;
+  }
+  .modal > .header {
+    width: 300px;
+    border-bottom: 1px solid gray;
+    font-size: 18px;
+    text-align: center;
+    padding: 5px;
+  }
+  .modal > .content {
+    width: 300px;
+    padding: 10px 5px;
+    display: flex;
+    flex-direction: column;
+
+    input{
+      margin-bottom: 10px;
+      width: 300px;
+    }
+    textarea{
+      width: 300px;
+    }
+  }
+  .modal > .actions {
+    width: 300px;
+    padding: 10px 5px;
+    margin: auto;
+    text-align: center;
+  }
+  .modal > .close {
+    cursor: pointer;
+    position: absolute;
+    display: block;
+    padding: 2px 5px;
+    line-height: 20px;
+    right: -10px;
+    top: -10px;
+    font-size: 24px;
+    // background: #ffffff;
+    border-radius: 18px;
+    // border: 1px solid #cfcece;
+  }
+
+  .hosted_tourna_list{
+    border : solid $border;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    padding: 10px;
+    .head_slide{
+      font-size: 1.2rem;
+      // font-weight: 600;
+    }
+    .tourna_det_slide{
+      width: 60%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      padding: 7px;
+
+      .t_name{
+        width: 25%;
+        text-align: left;
+        // border: solid white;
+      }
+      .t_venue{
+        width: 30%;
+        // border: solid white;
+        text-align: left;
+      }
+      .t_des{
+        // border: solid white;
+        width: 30%;
+        text-align: left;
+      }
+      .t_status{
+        width: 15%;
+        // border: solid white;
+        text-align: left;
+      }
+      .partic_btn{
+        width: 15%;
+        text-align: left;
+        button{
+          cursor: pointer;
+        }
+      }
+    }
+  }

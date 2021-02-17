@@ -1,10 +1,15 @@
 import React from 'react';
 import profilePic from '../images/propic.svg';
-import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux';
+import {useSelector , useDispatch} from 'react-redux'
 import {SignOut} from '../redux'
 
-function ProfileCard(props){
+const ProfileCard = () => {
+
+    const {error} = useSelector(state => ({
+        error : state.signup.error
+    }))
+    const dispatch = useDispatch()
+
         return(
             <div className = "profile_card">
                 <div className = "player_img">
@@ -31,7 +36,7 @@ function ProfileCard(props){
                         </div>
                     </div>
                 </div>
-                <div className = "sign_out_pcard" onClick = {() => props.Signout()}>
+                <div className = "sign_out_pcard" onClick = {() => dispatch(SignOut())}>
                     Sign Out
                 </div>
             </div>
@@ -39,17 +44,5 @@ function ProfileCard(props){
     }
 
 
-const mapStateToProps = state => {
-    return{
-        error : state.signup.error
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        Signout : bindActionCreators(SignOut , dispatch)
-      };
-}
-
-
-export default connect(mapStateToProps , mapDispatchToProps)(ProfileCard)
+export default ProfileCard

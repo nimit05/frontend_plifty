@@ -1,5 +1,4 @@
 import React from 'react';
-import {connect} from 'react-redux'
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import Header from '../containers/header'
 import Home from '../pages/home';
@@ -7,84 +6,37 @@ import Login from '../pages/login'
 import Signup from '../pages/signup';
 import Messages from '../pages/messages';
 import Players from '../pages/player';
-import DMS from '../containers/directMessages'
+import Tournament from '../pages/tournament'
+import Hosted_Tourna from '../containers/hosted_tourna';
+import Active_Tourna from '../containers/active_tourna';
+import Past_Tourna from '../containers/past_tourna';
+import Matches_Tourna from '../containers/matches_tourna';
+import Teams from '../pages/teams';
 
-class Apiroute extends React.Component{
-
-  constructor(props){
-    super(props)
-
-    this.state = {
-      loginPage : true
-    }
-
-   
-  }
-
-
-  componentDidMount(){
-
-    console.log(window.location.pathname)
-    console.log(this.props.userIds)
-
-    if(window.location.pathname === '/login' || window.location.pathname === '/signup'){
-      this.setState(() => {
-        return{
-          loginPage : false
-        }
-      })
-    }else{
-      this.setState(() => {
-        return{
-          loginPage : true
-        }
-      })
-    }
-  }
-
-  render(){
+const Apiroute = () =>{
+  
     return(
       <BrowserRouter>
       <div>
-        {this.state.loginPage && 
-          (
-          <div>
-            <Header /> 
-            <div className = "bottom_msg_row">
-              {this.props.userIds.map((id) =>{
-                return(
-                    <DMS userId = {id}/>
-                )
-              } )}
-            </div> 
-          </div>
-          )}
-        
+        {window.location.pathname != '/login' && window.location.pathname != '/signup' && <Header /> }
         <Switch>
           <Route path = "/login" component = {Login} exact ={true} />
           <Route path = "/signup" component = {Signup} exact ={true} />
           <Route path = "/messages" component = {Messages} exact ={true} />
           <Route path = "/players" component = {Players} exact ={true} />
           <Route path = "/" component = {Home} exact = {true} />
+          <Route path = "/teams" component = {Teams} exact = {true} />
+          <Route path = "/tournaments" component = {() => <Tournament Tourn_Cat = {Active_Tourna} />} exact = {true} />
+          <Route path = "/tournaments/hosted" component = {() => <Tournament Tourn_Cat = {Hosted_Tourna} />} exact = {true} />
+          <Route path = "/tournaments/past" component = {() => <Tournament Tourn_Cat = {Past_Tourna} />} exact = {true} />
+          <Route path = "/tournaments/matches" component = {() => <Tournament Tourn_Cat = {Matches_Tourna} />} exact = {true} />
         </Switch>
       </div>
     </BrowserRouter>
       )
     
   }
-}
   
-const mapStateToProps = state => {
-  return{
-    userIds : state.msgUserIds.UsersId
-  }
-}
-
-// const mapDispatchToProps = dispatch => {
-//   return {
-//       login : bindActionCreators(login , dispatch)
-//     };
-// }
 
 
-export default connect(mapStateToProps , null)(Apiroute)
+export default Apiroute;

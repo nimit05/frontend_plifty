@@ -1,22 +1,23 @@
 import React , {useState} from 'react';
-import {connect} from 'react-redux'
-import { bindActionCreators } from 'redux';
+import {useSelector , useDispatch} from 'react-redux'
 import {CreateUser} from '../redux'
+import Button from '../components/Button'
 
-function Signup(props){
-
+ const Signup = () => {
     const [inv_email , setInv_email] = useState(false)
     const [inv_phone , setInv_phone] = useState(false)
     const [match_pass , setMatch_pass] = useState(true)
     const [userData , setUserData] = useState({f_name : " " , l_name : " " ,
     email : " " , password : " " , phone_num : " " , type : " "})
-    const error = props.error
+    const err = useSelector(state => state.signup.error)
+    const dispatch = useDispatch();
+
     const ValidUsers = () => {
-        if(typeof(error) == 'string'){
-            if(error.indexOf('phone') != -1){   
+        if(typeof(err) == 'string'){
+            if(err.indexOf('phone') != -1){   
                 setInv_phone(true)
             }
-            else if(error.indexOf('email') != -1){
+            else if(err.indexOf('email') != -1){
                 setInv_email(true)
             }
         }
@@ -40,7 +41,7 @@ function Signup(props){
             }
             setUserData({...userData , type : conti})
 
-        await props.CreateUser(userData)
+        await dispatch(CreateUser(userData))    
 
         setInv_email(false)
         setInv_phone(false)
@@ -86,7 +87,7 @@ function Signup(props){
                                 } />
                                 {inv_email && (
                                     <div className = "lower_alert">
-                                        {props.error}
+                                        {err}
                                     </div>
                                     )}
                             </div>
@@ -100,7 +101,7 @@ function Signup(props){
                                 } />
                                 {inv_phone && (
                                     <div className = "lower_alert">
-                                        {typeof(props.error) == 'string' && props.error}
+                                        {typeof(err) == 'string' && err}
                                     </div>
                                     )}
                             </div>
@@ -127,7 +128,7 @@ function Signup(props){
                                 )}
                             
                         </div>
-                        <div className = "continue_cbox">
+                        {/* <div className = "continue_cbox">
                             <div className = "cont_text">Continue As</div>
                             <div className = "checkboxes">
                                 <label for = "player">Player</label>
@@ -136,8 +137,8 @@ function Signup(props){
                                 <label for = "player">Expert</label>
                                 <input type = "radio" name = "player" id = "expert_cb" />
                             </div>
-                        </div>
-                        <div className = "submit_btn_signup">
+                        </div> */}
+                        <div className = "submit_btn_signup uni_button_plifty">
                             <button onClick = {Signup}>Sign Up</button>
                         </div>
                         <div className = "login_route">
@@ -154,17 +155,5 @@ function Signup(props){
     }
 
 
-const mapStateToProps = state => {
-    return{
-        error : state.signup.error
-    }
-}
 
-const mapDispatchToProps = dispatch => {
-    return {
-        CreateUser : bindActionCreators(CreateUser , dispatch)
-      };
-}
-
-
-export default connect(mapStateToProps , mapDispatchToProps)(Signup)
+export default Signup;

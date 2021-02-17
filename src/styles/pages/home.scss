@@ -64,3 +64,16 @@
     }
 }
 
+.acc_hosting{
+    max-width: 550px;
+    min-width: 500px;
+    border: solid white;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    button{
+        padding: 10px;
+        background-color: $pri;
+        border: 1px solid $main;
+    }
+}
