@@ -1,0 +1,31 @@
+.host_one_tourna{
+    margin-top: 100px;
+    width: 1100px;
+    height: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    color: white;
+    // border: solid white;
+}
+
+.host_tourna_form{
+    .sub_head{
+        font-size: 1.8rem;
+        margin-bottom: 20px;
+    }
+    
+    button : {
+        background-color: $pri;
+    }
+    
+    width: 500px;
+    color: white;
+    margin-left: auto;
+    margin-right: auto;
+    // border: solid white;
+    text-align: center;
+
+    .cc{
+        color : 'white'
+    }
+}

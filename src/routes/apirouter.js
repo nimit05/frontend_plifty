@@ -12,6 +12,10 @@ import Active_Tourna from '../containers/active_tourna';
 import Past_Tourna from '../containers/past_tourna';
 import Matches_Tourna from '../containers/matches_tourna';
 import Teams from '../pages/teams';
+import CreateTeam from '../containers/create_team'
+import JoinTeam from '../containers/join_team';
+import Host_Tourna from '../containers/host_tourna'
+import Participate from '../containers/participate'
 
 const Apiroute = () =>{
   
@@ -26,6 +30,10 @@ const Apiroute = () =>{
           <Route path = "/players" component = {Players} exact ={true} />
           <Route path = "/" component = {Home} exact = {true} />
           <Route path = "/teams" component = {Teams} exact = {true} />
+          <Route path = "/teams/create_team" component = {CreateTeam} exact = {true} />
+          <Route path = "/tournaments/participate/:tourId" component = {Participate} exact = {true} />
+          <Route path = "/teams/join_team" component = {JoinTeam} exact = {true} />
+          <Route path = "/teams/host_tourna" component = {Host_Tourna} exact = {true} />
           <Route path = "/tournaments" component = {() => <Tournament Tourn_Cat = {Active_Tourna} />} exact = {true} />
           <Route path = "/tournaments/hosted" component = {() => <Tournament Tourn_Cat = {Hosted_Tourna} />} exact = {true} />
           <Route path = "/tournaments/past" component = {() => <Tournament Tourn_Cat = {Past_Tourna} />} exact = {true} />

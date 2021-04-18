@@ -1,29 +1,53 @@
-import React, { useState } from 'react';
+import React, { useEffect , useState } from 'react';
+import {NavLink} from 'react-router-dom'
 
-function Teams(){
-    const [arr , setArr] = useState([5,5,5,5,25,1,45,15])
+
+const Teams = () => {
+    const [teams , setTeams] = useState([])
+
+    useEffect(() => {
+        fetch('/api/team')
+        .then((res) => res.json())
+        .then((data) => {
+                setTeams(data)
+        })
+    } , [])
     return( 
         <div className = "teams_page">
-            <div className = "create_team_btn">
+            <NavLink 
+            className = "create_team_btn"
+            to = "/teams/create_team"
+            >
                 <button>
                     + Create Team 
                 </button>
+            </NavLink>
+            <NavLink 
+            className = "create_team_btn"
+            to = "/teams/join_team"
+            >
+                <button>
+                    + Join Team 
+                </button>
+            </NavLink>
+            <div className = "teams_cont_det">
+                <div className = "sr_id">S No.</div>
+                <div className = "team_name">Name</div>
+                <div className = "team_field">Field</div>
+                <div className = "team_size">Size</div>
+                <div className = "team_link">Team Code</div>
             </div>
-             <div className = "team_list">
-                {arr.map(() => {
-                    return(
-                        <div className = "team_tab">
-                            <div className = "team_img">
-                            
-                            </div>
-                            <div className = "team_name">
-                                Deccan Chargers
-                            </div>
-                        </div>
-                    )
-                })}
-                
-             </div>
+            {teams.map((team) => {
+                return (
+                    <div className = "teams_cont_det_map">
+                        <div className = "sr_id">{team.Id}.</div>
+                        <div className = "team_name">{team.TeamName}</div>
+                        <div className = "team_field">{team.TeamField}</div>
+                        <div className = "team_size">{team.TeamSize}</div>
+                        <div className = "team_link">{team.TeamCode}</div>
+                    </div>
+                )
+            })}
         </div>
     )
 }    

@@ -1,10 +1,9 @@
 import React , {useEffect, useState} from 'react';
-import Popup from 'reactjs-popup';
+import { NavLink } from 'react-router-dom';
 import 'reactjs-popup/dist/index.css';
 import down from '../images/down.svg'
 
 const Hosted_Tourna = () => {
-    const [Tdata , setTdata] = useState({tourName : "" , venue : "" , description : ""})
     const [Tourna , setTourna] = useState([])
 
     const GetTourna = () => {
@@ -40,66 +39,17 @@ const Hosted_Tourna = () => {
         GetTourna()
     },[])
 
-    const HandleCreate = () => {
-    fetch('/api/tourna' , {
-        method : "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify(Tdata)
-    }).then((res) => res.json())
-    .then((data) => {
-        if(data.error){
-            alert('error occured')
-        }else if(data){
-            GetTourna()
-        }
-    })
-    }
     return(
         <div className = "hosted_tourna">
             <div className = "hosted_empty">
                     <span className = "msg">
                         Host Your Own Tournament
                     </span>
-                    <Popup
-                        trigger={<button className="button"> Host One </button>}
-                        modal
-                        nested
-                     >
-                        {close => (
-                        <div className="modal">
-                            <button className="close" onClick={close}>
-                            &times;
-                            </button>
-                            <div className="header"> Modal Title </div>
-                            <div className="content">
-                                <input placeholder = "Name" type = "text" onChange = {(e) => {
-                                    setTdata({...Tdata , tourName : e.target.value})
-                                }} />
-                              
-                                <input placeholder = "Venue" type = "text" onChange = {(e) => {
-                                    setTdata({...Tdata , venue : e.target.value})
-                                }}  />
-                                <textarea placeholder = "Description" onChange = {(e) => {
-                                    setTdata({...Tdata , description : e.target.value})
-                                }}  />
-                            </div>
-                            <div className="actions">
-                            <button
-                                className="button"
-                                onClick={() => {
-                                console.log('modal closed ');
-                                close();
-                                HandleCreate()
-                                }}
-                            >
-                                Create
-                            </button>
-                            </div>
-                        </div>
-                        )}
-                    </Popup>
+                    <NavLink to = "/teams/host_tourna">
+                        <button className = "button">
+                            Host One
+                        </button>
+                    </NavLink>    
                 </div>
                 {Tourna.length > 0 &&
                 <div className = "hosted_tourna_list">
@@ -112,6 +62,9 @@ const Hosted_Tourna = () => {
                         </div>
                         <div className = "t_des">
                             Description
+                        </div>
+                        <div className = "t_des">
+                            Entry Fee
                         </div>
                         <div className = "t_status">
                             Status
@@ -128,6 +81,9 @@ const Hosted_Tourna = () => {
                                 </div>
                                 <div className = "t_des">
                                     {t.Description}
+                                </div>
+                                <div className = "t_des">
+                                    {t.EntryFee}
                                 </div>
                                 <div className = "t_status">
                                     <select defaultValue = "open" onChange = {() => handleStatus(t.Id)}>

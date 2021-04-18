@@ -32,14 +32,7 @@ import Button from '../components/Button'
         }else{
            setMatch_pass(true)
 
-            let conti  = ''
-            if(document.getElementById('player_cb').checked == true){
-                conti = "player"
-            }
-            if(document.getElementById('expert_cb').checked == true){
-                conti = "expert"
-            }
-            setUserData({...userData , type : conti})
+         
 
         await dispatch(CreateUser(userData))    
 

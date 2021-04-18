@@ -1,4 +1,6 @@
-import React , {useEffect , useState} from 'react'
+import React , {useEffect , useState} from 'react';
+import { NavLink } from 'react-router-dom';
+import Participate from './participate';
 
 const Active_Tourna = () => {
     const [Tourna , setTourna] = useState([])
@@ -48,6 +50,9 @@ const Active_Tourna = () => {
                         <div className = "t_des">
                             Description
                         </div>
+                        <div className = "t_des">
+                            Entry Fee
+                        </div>
                         <div className = "partic_btn">
 
                         </div>
@@ -64,10 +69,15 @@ const Active_Tourna = () => {
                                 <div className = "t_des">
                                     {t.Description}
                                 </div>
+                                <div className = "t_des">
+                                    {t.EntryFee}
+                                </div>
                                 <div className = "partic_btn">
-                                    <button >
-                                        participate
-                                    </button>
+                                        <button className = "button" onClick = {() => {
+                                            window.location.href = `/tournaments/participate/${t.Id}`
+                                        }}>
+                                            participate
+                                        </button>                                    
                                 </div>
                             </div>
                         )

@@ -4,6 +4,25 @@
     margin-left: auto;
     margin-right: auto;
     color: white;
+
+    .sr_id{
+        width: 10%;
+        }
+    
+        .team_name{
+        width: 20%;
+        }
+    
+        .team_field{
+        width: 20%;
+        }
+    
+        .team_size{
+        width: 10%;
+        }
+        .team_link{
+        width: 30%;
+        }
 }
 
 .create_team_btn{
@@ -14,6 +33,7 @@
         font-size: 1.1rem;
         padding: 5px;
         cursor: pointer;
+        margin-right: 20px;
     }
 }
 
@@ -50,4 +70,23 @@
         }
         }
     
+}
+
+.teams_cont_det_map{
+    width: 1000px;
+    padding: 10px 50px;
+    display: flex;
+    text-align: center;
+    flex-direction: row;
+}
+
+.teams_cont_det{
+    width: 1000px;
+    padding: 20px 50px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    // border: solid white;
+
+   
 }
